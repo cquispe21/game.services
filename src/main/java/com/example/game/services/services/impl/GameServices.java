@@ -1,6 +1,6 @@
-package com.example.game.services.services;
+package com.example.game.services.services.impl;
 
-import com.example.game.services.entities.Game;
+import com.example.game.services.commons.entities.Game;
 import com.example.game.services.repository.GameRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +22,6 @@ public class GameServices  {
        var response = this.gameRepository.findAll();
        return response;
     }
-    
-    public Game getGameById(Long id){
-        var response = this.gameRepository.findById(id).orElseThrow();
-        return response;
-    }
 
-    public Game updateGame(Long id, Game game){
-        var gameUpdate = this.gameRepository.findById(id).orElseThrow();
-   gameUpdate.setGameName(null != game.getGameName() ? game.getGameName() : gameUpdate.getGameName());
 
-        var response = this.gameRepository.save(gameUpdate);
-    }
 }
